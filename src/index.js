@@ -1,23 +1,23 @@
-import mongoose from "mongoose";
-import app from "./app.js";
-import config from "./config/config.js";
-
-await mongoose.connect(config.mongoose.url, config.mongoose.options);
-
-const { port } = config;
+import mongoose from 'mongoose';
+import app from './app.js';
+import config from './config/config.js';
 
 let server;
 
-server = app.listen(port, (err) => {
-  if (err) {
-    console.log("err", err);
-    return;
-  }
-  console.log(`App is up and running on port: ${port}`);
+mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
+  const { port } = config;
+
+  server = app.listen(port, (err) => {
+    if (err) {
+      process.stdout.write('err', err);
+      return;
+    }
+    process.stdout.write(`App is up and running on port: ${port}`);
+  });
 });
 
 const unexpectedErrorHandler = (error) => {
-  console.log(error);
+  process.stdout.write(error);
   if (server) {
     server.close(() => {
       process.exit(1);
@@ -27,5 +27,5 @@ const unexpectedErrorHandler = (error) => {
   process.exit(1);
 };
 
-process.on("uncaughtException", unexpectedErrorHandler);
-process.on("unhandledRejection", unexpectedErrorHandler);
+process.on('uncaughtException', unexpectedErrorHandler);
+process.on('unhandledRejection', unexpectedErrorHandler);

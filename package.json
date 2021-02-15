@@ -6,7 +6,25 @@
   "type": "module",
   "scripts": {
     "start": "nodemon node ./src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "eslint": "eslint .",
+    "eslint-fix": "eslint . --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/faparipik/pizza-place-back"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,css}": [
+      "prettier --write",
+      "eslint --fix",
+      "npm run eslint-fix"
+    ]
   },
   "keywords": [
     "pizza",
@@ -26,6 +44,11 @@
     "mongoose": "^5.11.15"
   },
   "devDependencies": {
+    "eslint": "^7.20.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "husky": "^5.0.9",
+    "lint-staged": "^10.5.4",
     "nodemon": "^2.0.7"
   }
 }
