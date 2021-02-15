@@ -3,10 +3,18 @@
   "version": "1.0.0",
   "description": "Simple Pizza place API",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["pizza", "place", "pizza-api"],
+  "keywords": [
+    "pizza",
+    "place",
+    "pizza-api"
+  ],
   "author": "Faruk Bruncevic",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
