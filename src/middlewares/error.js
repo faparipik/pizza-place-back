@@ -1,8 +1,7 @@
 import status from "http-status";
 
-const { NODE_ENV = "development" } = process.env;
-
 const errorHandler = (err, req, res, next) => {
+  const { NODE_ENV = "development" } = process.env;
   let { statusCode, message } = err;
   if (NODE_ENV === "production") {
     statusCode = status.INTERNAL_SERVER_ERROR;
