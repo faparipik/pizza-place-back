@@ -1,18 +1,19 @@
+import mongoose from "mongoose";
 import app from "./app.js";
-import dotenv from "dotenv";
+import config from "./config/config.js";
 
-dotenv.config();
+await mongoose.connect(config.mongoose.url, config.mongoose.options);
 
-const { PORT = 5555 } = process.env;
+const { port } = config;
 
 let server;
 
-server = app.listen(PORT, (err) => {
+server = app.listen(port, (err) => {
   if (err) {
     console.log("err", err);
     return;
   }
-  console.log(`App is up and running on port: ${PORT}`);
+  console.log(`App is up and running on port: ${port}`);
 });
 
 const unexpectedErrorHandler = (error) => {
