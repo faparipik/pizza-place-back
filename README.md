@@ -1,5 +1,5 @@
 ## Table of contents
-* [Technologies] (#technologies)
+* [Technologies](#technologies)
 ## Technologies
 
 * Node version 14.9.0
