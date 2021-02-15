@@ -3,7 +3,7 @@ import Joi from 'joi';
 
 dotenv.config();
 
-const envVarsSchema = Joi.object()
+const envVarsSchema =   Joi.object()
   .keys({
     NODE_ENV: Joi.string().valid('production', 'development', 'test').required(),
     PORT: Joi.number().default(5555),
