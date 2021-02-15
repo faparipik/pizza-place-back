@@ -2,6 +2,7 @@
 
 - [Setup](#setup)
 - [Technologies](#technologies)
+- [Scripts](#scripts)
 
 ## Technologies
 
@@ -22,3 +23,10 @@ cp .env.example .env
 
 - `npm install` to install required dependencies
 - `npm start` to start local server
+
+## Scripts
+
+- `npm start` to start local server
+- `npm test` to start tests
+- `npm eslint` to check for errors in code 
+- `npm eslint-fix` to fix errors in code

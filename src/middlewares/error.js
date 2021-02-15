@@ -1,9 +1,10 @@
-import status from "http-status";
+import status from 'http-status';
 
+// eslint-disable-next-line no-unused-vars
 const errorHandler = (err, req, res, next) => {
-  const { NODE_ENV = "development" } = process.env;
+  const { NODE_ENV = 'development' } = process.env;
   let { statusCode, message } = err;
-  if (NODE_ENV === "production") {
+  if (NODE_ENV === 'production') {
     statusCode = status.INTERNAL_SERVER_ERROR;
     message = status[status.INTERNAL_SERVER_ERROR];
   }
@@ -13,11 +14,11 @@ const errorHandler = (err, req, res, next) => {
   const response = {
     code: statusCode,
     message,
-    ...(NODE_ENV === "development" && { stack: err.stack }),
+    ...(NODE_ENV === 'development' && { stack: err.stack }),
   };
 
-  if (NODE_ENV === "development") {
-    console.log(err);
+  if (NODE_ENV === 'development') {
+    throw new Error(err);
   }
 
   res.status(statusCode).send(response);
