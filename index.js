@@ -1,13 +1,14 @@
 import express from "express";
 import dotenv from "dotenv";
 
-const app = express();
-
 dotenv.config();
 
-app.use(express.json());
+const app = express();
 
-const PORT = process.env.PORT || 5555;
+const { PORT = 5555 } = process.env;
+
+
+app.use(express.json());
 
 app.listen(PORT, (err) => {
   if (err) {
