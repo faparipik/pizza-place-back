@@ -10,14 +10,20 @@
     "eslint": "eslint .",
     "eslint-fix": "eslint . --fix"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/faparipik/pizza-place-back"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix"
+    "*.{js,jsx,ts,tsx,json,css}": [
+      "prettier --write",
+      "eslint --fix",
+      "npm run eslint-fix"
     ]
   },
   "keywords": [
