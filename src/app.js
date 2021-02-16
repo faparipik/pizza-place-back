@@ -21,8 +21,6 @@ app.options('*', cors());
 
 app.use((req, res, next) => {
   next(new ApiError(status.NOT_FOUND, status[`${status.NOT_FOUND}_MESSAGE`]));
-  console.log('testing eslint');
-  process.stdout.write('test');
 });
 
 app.use(errorHandler);
