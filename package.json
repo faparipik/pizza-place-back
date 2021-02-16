@@ -16,13 +16,12 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged --allow-empty"
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css}": [
-      "prettier --write",
-      "eslint --fix src/"
+    "src/**/*.{js,json}": [
+      "npm run eslint-fix"
     ]
   },
   "keywords": [
