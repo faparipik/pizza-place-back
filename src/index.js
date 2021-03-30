@@ -2,18 +2,16 @@ import mongoose from 'mongoose';
 import app from './app.js';
 import config from './config/config.js';
 
-let server;
+const { port } = config;
 
-mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
-  const { port } = config;
+mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {});
 
-  server = app.listen(port, (err) => {
-    if (err) {
-      process.stdout.write('err', err);
-      return;
-    }
-    process.stdout.write(`App is up and running on port: ${port}`);
-  });
+const server = app.listen(port, (err) => {
+  if (err) {
+    process.stdout.write('err', err);
+    return;
+  }
+  process.stdout.write(`App is up and running on port: ${port}`);
 });
 
 const unexpectedErrorHandler = (error) => {

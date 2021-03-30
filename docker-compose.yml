@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  db:
+    image: mongo
+    volumes:
+      - db:/data/db
+
+  server:
+    build:
+      context: .
+    depends_on:
+      - db
+    ports:
+      - '5000:5000'
+    volumes:
+      - ./:/usr/app
+
+volumes:
+  db:
